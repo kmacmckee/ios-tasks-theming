@@ -12,6 +12,11 @@ class TaskDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(red: 69 / 255, green: 98 / 255, blue: 113 / 255, alpha: 1)
+        nameTextField.font = AppearanceHelper.hipFont(with: .body, pointSize: 24)
+        notesTextView.font = AppearanceHelper.hipFont(with: .body, pointSize: 24)
+        let textAttributes = [NSAttributedString.Key.font: UIFont(name: "Hipchick", size: 22)!]
+        priorityControl.setTitleTextAttributes(textAttributes, for: .normal)
 
         updateViews()
     }

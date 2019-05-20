@@ -19,6 +19,27 @@ class TasksTableViewController: UITableViewController, NSFetchedResultsControlle
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        let imageView = UIImageView(image: AppearanceHelper.backgroundImage)
+        self.tableView.backgroundView = imageView
+        
+        
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let view = view as? UITableViewHeaderFooterView {
+            view.backgroundView?.backgroundColor = UIColor(red: 0 / 255, green: 40 / 255, blue: 61 / 255, alpha: 1)
+            view.textLabel?.textColor = AppearanceHelper.lightTextColor
+            
+            view.textLabel?.font = AppearanceHelper.hipFont(with: .body, pointSize: 20)
+        }
+    }
+    
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -34,9 +55,13 @@ class TasksTableViewController: UITableViewController, NSFetchedResultsControlle
         
         let task = fetchedResultsController.object(at: indexPath)
         cell.textLabel?.text = task.name
+        cell.textLabel?.font = AppearanceHelper.hipFont(with: .caption1, pointSize: 30)
+        cell.backgroundColor = .clear
         
         return cell
     }
+    
+
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard let sectionInfo = fetchedResultsController.sections?[section] else { return nil }
